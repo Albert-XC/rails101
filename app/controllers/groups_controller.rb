@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+before_action :authenticate_user! , only: [:new]
   def index
     @groups = Group.all
   end
@@ -39,7 +40,7 @@ def destroy
      flash[:alert] = "Group deleted"
      redirect_to groups_path
    end
- 
+
   private
  
   def group_params
